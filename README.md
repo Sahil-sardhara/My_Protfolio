@@ -36,10 +36,8 @@ This app includes theme customization, app-style navigation, and a modern UI to 
 | Android View | iOS View | Tablet View |
 |--------------|----------|-------------|
 | ![Android](assets/screenshots/a![android screen](https://github.com/user-attachments/assets/cb66ff0a-81ad-48bc-a340-8cf9a98f1962)
-ndroid.png) |
-![iOS](assets/scre![iphone screen](https://github.com/user-attachments/assets/d81d9d89-2d6b-4dc4-b17a-2de2d00b7f18)
-enshots/ios.png) |
-![Tablet](assets/screenshots/tab![tablet  screen](https://github.com/user-attachments/assets/9ffea582-a76e-455c-90c8-9afd998b4b57)
+ndroid.png) |![iOS](assets/scre![iphone screen](https://github.com/user-attachments/assets/d81d9d89-2d6b-4dc4-b17a-2de2d00b7f18)
+enshots/ios.png) |![Tablet](assets/screenshots/tab![tablet  screen](https://github.com/user-attachments/assets/9ffea582-a76e-455c-90c8-9afd998b4b57)
 let.png) |
 
 *(Make sure to save these screenshots in `assets/screenshots/` or update the path)*
