@@ -76,12 +76,29 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    CurrentState currentState = Provider.of<CurrentState>(
-      context,
-      listen: false,
-    );
+    CurrentState currentState = Provider.of<CurrentState>(context, listen: false);
 
     return Scaffold(
+      bottomNavigationBar: size.width < 600
+          ? Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const [
+                  Icon(Icons.favorite, color: Colors.red, size: 18),
+                  SizedBox(width: 6),
+                  Text(
+                    "Built with love using Flutter",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 13,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ],
+              ),
+            )
+          : null,
       body: Stack(
         children: [
           Selector<CurrentState, int>(
@@ -113,14 +130,13 @@ class HomeScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    // LEFT Column
+                    // LEFT
                     Column(
                       children: [
                         Transform(
-                          transform:
-                              Matrix4.identity()
-                                ..setEntry(3, 2, 0.001)
-                                ..rotateY(-0.07),
+                          transform: Matrix4.identity()
+                            ..setEntry(3, 2, 0.001)
+                            ..rotateY(-0.07),
                           alignment: Alignment.center,
                           child: FrostedContainer(
                             height: 345,
@@ -136,16 +152,15 @@ class HomeScreen extends StatelessWidget {
                               ),
                             ),
                           ).animate().fadeIn(
-                            delay: 0.4.seconds,
-                            duration: 0.7.seconds,
-                          ),
+                                delay: 0.4.seconds,
+                                duration: 0.7.seconds,
+                              ),
                         ),
                         const SizedBox(height: 20),
                         Transform(
-                          transform:
-                              Matrix4.identity()
-                                ..setEntry(3, 2, 0.001)
-                                ..rotateY(-0.07),
+                          transform: Matrix4.identity()
+                            ..setEntry(3, 2, 0.001)
+                            ..rotateY(-0.07),
                           alignment: Alignment.center,
                           child: FrostedContainer(
                             height: 245,
@@ -155,11 +170,8 @@ class HomeScreen extends StatelessWidget {
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Icon(
-                                    Icons.connect_without_contact,
-                                    color: Colors.white,
-                                    size: 36,
-                                  ),
+                                  Icon(Icons.connect_without_contact,
+                                      color: Colors.white, size: 36),
                                   SizedBox(height: 10),
                                   Text(
                                     "Let's connect!",
@@ -173,15 +185,15 @@ class HomeScreen extends StatelessWidget {
                               ),
                             ),
                           ).animate().fadeIn(
-                            delay: 0.6.seconds,
-                            duration: 0.7.seconds,
-                          ),
+                                delay: 0.6.seconds,
+                                duration: 0.7.seconds,
+                              ),
                         ),
                       ],
                     ),
                     const SizedBox(width: 30),
 
-                    // CENTER Device Preview
+                    // MIDDLE
                     SizedBox(
                       height: size.height - 100,
                       child: Consumer<CurrentState>(
@@ -193,7 +205,8 @@ class HomeScreen extends StatelessWidget {
                             screen: AspectRatio(
                               aspectRatio:
                                   currentState.currentdevice.screenSize.width /
-                                  currentState.currentdevice.screenSize.height,
+                                      currentState
+                                          .currentdevice.screenSize.height,
                               child: ScreenWrapper(
                                 childg: currentState.currentscreen,
                               ),
@@ -204,14 +217,13 @@ class HomeScreen extends StatelessWidget {
                     ),
                     const SizedBox(width: 30),
 
-                    // RIGHT Column
+                    // RIGHT
                     Column(
                       children: [
                         Transform(
-                          transform:
-                              Matrix4.identity()
-                                ..setEntry(3, 2, 0.001)
-                                ..rotateY(0.07),
+                          transform: Matrix4.identity()
+                            ..setEntry(3, 2, 0.001)
+                            ..rotateY(0.07),
                           alignment: Alignment.center,
                           child: FrostedContainer(
                             height: 345,
@@ -228,15 +240,16 @@ class HomeScreen extends StatelessWidget {
                                         return CustomButton(
                                           margin: const EdgeInsets.all(10),
                                           onPressed: () {
-                                            currentState.changegradient(index);
+                                            currentState
+                                                .changegradient(index);
                                           },
                                           animate: true,
                                           isThreeD: true,
                                           borderRadius: 100,
-                                          pressed:
-                                              currentState.knobselected == index
-                                                  ? Pressed.pressed
-                                                  : Pressed.notPressed,
+                                          pressed: currentState.knobselected ==
+                                                  index
+                                              ? Pressed.pressed
+                                              : Pressed.notPressed,
                                           height: 52,
                                           width: 52,
                                           shadowColor: Colors.white,
@@ -250,16 +263,15 @@ class HomeScreen extends StatelessWidget {
                               ),
                             ),
                           ).animate().fadeIn(
-                            delay: 0.5.seconds,
-                            duration: 0.7.seconds,
-                          ),
+                                delay: 0.5.seconds,
+                                duration: 0.7.seconds,
+                              ),
                         ),
                         const SizedBox(height: 20),
                         Transform(
-                          transform:
-                              Matrix4.identity()
-                                ..setEntry(3, 2, 0.001)
-                                ..rotateY(0.07),
+                          transform: Matrix4.identity()
+                            ..setEntry(3, 2, 0.001)
+                            ..rotateY(0.07),
                           alignment: Alignment.center,
                           child: FrostedContainer(
                             height: 245,
@@ -279,9 +291,9 @@ class HomeScreen extends StatelessWidget {
                               ),
                             ),
                           ).animate().fadeIn(
-                            delay: 0.7.seconds,
-                            duration: 0.7.seconds,
-                          ),
+                                delay: 0.7.seconds,
+                                duration: 0.7.seconds,
+                              ),
                         ),
                       ],
                     ),
@@ -290,31 +302,30 @@ class HomeScreen extends StatelessWidget {
               ),
               const SizedBox(height: 10),
 
-              // Bottom Device Selector
+              // DEVICE SELECTOR
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   ...List.generate(
                     devices.length,
                     (index) => Selector<CurrentState, DeviceInfo>(
-                      selector: (context, provider) => provider.currentdevice,
+                      selector: (context, provider) =>
+                          provider.currentdevice,
                       builder: (context, _, __) {
                         return CustomButton(
                           backgroundColor: Colors.black,
                           borderRadius: 100,
                           onPressed: () {
-                            currentState.changeSelectedDevice(
-                              devices[index].device,
-                            );
+                            currentState
+                                .changeSelectedDevice(devices[index].device);
                           },
                           height: 30,
                           width: 30,
                           animate: true,
-                          pressed:
-                              currentState.currentdevice ==
-                                      devices[index].device
-                                  ? Pressed.pressed
-                                  : Pressed.notPressed,
+                          pressed: currentState.currentdevice ==
+                                  devices[index].device
+                              ? Pressed.pressed
+                              : Pressed.notPressed,
                           isThreeD: true,
                           shadowColor: Colors.white,
                           child: Center(
@@ -331,31 +342,6 @@ class HomeScreen extends StatelessWidget {
               ),
             ],
           ),
-
-          // 📱 Footer for mobile screen
-          if (size.width < 600)
-            Positioned(
-              bottom: 10,
-              left: 0,
-              right: 0,
-              child: Center(
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: const [
-                    Icon(Icons.favorite, color: Colors.red, size: 18),
-                    SizedBox(width: 6),
-                    Text(
-                      "Built with love using Flutter",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 13,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
         ],
       ),
     );

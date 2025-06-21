@@ -10,55 +10,59 @@ class ScreenWrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    CurrentState instance = Provider.of<CurrentState>(context, listen: false);
+    final instance = Provider.of<CurrentState>(context, listen: false);
 
     return LayoutBuilder(
       builder: (context, constraints) {
+        final screenWidth = constraints.maxWidth;
+
         return Container(
-          width: constraints.maxWidth, // ✅ ensure full width
-          height: constraints.maxHeight, // ✅ ensure full height
+          width: screenWidth,
+          height: constraints.maxHeight,
           child: Column(
             children: [
               Consumer<CurrentState>(
-                builder: (context, _, __) {
-                  if (!instance.isMainscreen) {
-                    return Container(
-                      color: Colors.white,
-                      width: double.infinity,
-                      padding: const EdgeInsets.only(
-                        top: 30,
-                        left: 16,
-                        right: 16,
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            instance.title ?? "",
-                            style: GoogleFonts.inter(fontSize: 24),
-                          ),
-                          IconButton(
-                            onPressed: () {
-                              instance.ChnagePhoneScreen(
-                                const PhoneScreen(),
-                                true,
-                              );
-                            },
-                            icon: const Icon(Icons.close),
-                          ),
-                        ],
+                builder: (context, state, _) {
+                  if (!state.isMainscreen) {
+                    return SafeArea(
+                      child: Container(
+                        color: Colors.white,
+                        width: double.infinity,
+                        padding: EdgeInsets.symmetric(
+                          vertical: 16,
+                          horizontal: screenWidth < 500 ? 12 : 24,
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Flexible(
+                              child: Text(
+                                state.title ?? "",
+                                style: GoogleFonts.inter(
+                                  fontSize: screenWidth < 500 ? 20 : 24,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                            IconButton(
+                              onPressed: () {
+                                state.ChnagePhoneScreen(
+                                  const PhoneScreen(),
+                                  true,
+                                );
+                              },
+                              icon: const Icon(Icons.close),
+                            ),
+                          ],
+                        ),
                       ),
                     );
                   }
                   return const SizedBox.shrink();
                 },
               ),
-              Expanded(
-                child: Container(
-                  width: double.infinity, // ✅ Force full width
-                  child: childg,
-                ),
-              ),
+              Expanded(child: Container(width: double.infinity, child: childg)),
             ],
           ),
         );

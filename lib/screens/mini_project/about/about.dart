@@ -7,15 +7,23 @@ class AboutME extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    final isMobile = size.width < 600;
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
-        child: Container(
-          margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+        padding: const EdgeInsets.all(16),
+        child: Center(
           child: Container(
-            decoration: BoxDecoration(color: Color(0xfff5f4e7)),
-            padding: EdgeInsets.all(10),
+            constraints: const BoxConstraints(maxWidth: 900),
+            decoration: BoxDecoration(
+              color: const Color(0xfff5f4e7),
+              borderRadius: BorderRadius.circular(12),
+            ),
+            padding: const EdgeInsets.all(20),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 GestureDetector(
                   onTap: () {
@@ -24,7 +32,7 @@ class AboutME extends StatelessWidget {
                       builder:
                           (_) => Dialog(
                             backgroundColor: Colors.transparent,
-                            insetPadding: EdgeInsets.all(10),
+                            insetPadding: const EdgeInsets.all(10),
                             child: Stack(
                               children: [
                                 GestureDetector(
@@ -48,7 +56,7 @@ class AboutME extends StatelessWidget {
                                   top: 10,
                                   right: 10,
                                   child: IconButton(
-                                    icon: Icon(
+                                    icon: const Icon(
                                       Icons.close,
                                       color: Colors.white,
                                       size: 30,
@@ -62,28 +70,32 @@ class AboutME extends StatelessWidget {
                     );
                   },
                   child: CircleAvatar(
-                    radius: 50,
-                    backgroundImage: AssetImage(
+                    radius: isMobile ? 50 : 70,
+                    backgroundImage: const AssetImage(
                       "assets/images/about_profile.jpg",
                     ),
                   ),
                 ),
-
-                Divider(),
+                const SizedBox(height: 20),
+                const Divider(),
+                const SizedBox(height: 20),
                 Text(
                   "Hyy, I am Sahil Sardhara",
                   style: GoogleFonts.openSans(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w500,
+                    fontSize: isMobile ? 20 : 26,
+                    fontWeight: FontWeight.w600,
                   ),
+                  textAlign: TextAlign.center,
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Text(
                   introduction,
                   style: GoogleFonts.openSans(
-                    fontSize: 15,
+                    fontSize: isMobile ? 14 : 16,
                     fontWeight: FontWeight.w500,
+                    height: 1.5,
                   ),
+                  textAlign: TextAlign.justify,
                 ),
               ],
             ),

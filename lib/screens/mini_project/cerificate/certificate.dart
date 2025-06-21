@@ -13,7 +13,6 @@ class CertificatePage extends StatefulWidget {
 class _CertificatePageState extends State<CertificatePage> {
   int? _expandedIndex;
 
-  // Function to launch certificate link
   Future<void> _launchURL(String url) async {
     final Uri uri = Uri.parse(url);
     if (await canLaunchUrl(uri)) {
@@ -27,6 +26,8 @@ class _CertificatePageState extends State<CertificatePage> {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -47,52 +48,84 @@ class _CertificatePageState extends State<CertificatePage> {
           ],
         ),
       ),
-      body: ListView.builder(
-        itemCount: certificates.length,
-        padding: const EdgeInsets.all(12),
-        itemBuilder: (context, index) {
-          final cert = certificates[index];
-          final isExpanded = _expandedIndex == index;
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          final isWide = constraints.maxWidth > 700;
 
-          return Card(
-            elevation: 4,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12),
-            ),
-            margin: const EdgeInsets.symmetric(vertical: 8),
-            child: ExpansionTile(
-              key: Key("cert_$index-${isExpanded}"), // Force rebuild
-              initiallyExpanded: isExpanded,
-              onExpansionChanged: (bool expanded) {
-                setState(() {
-                  _expandedIndex = expanded ? index : null;
-                });
-              },
-              title: Text(
-                cert.title,
-                style: GoogleFonts.openSans(fontWeight: FontWeight.bold),
-              ),
-              subtitle: Text("${cert.issuer} • ${cert.date}"),
-              children: [
-                if (cert.description != null)
-                  Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: Text(
-                      cert.description!,
-                      style: GoogleFonts.openSans(fontSize: 14),
+          return ListView.builder(
+            itemCount: certificates.length,
+            padding: const EdgeInsets.all(16),
+            itemBuilder: (context, index) {
+              final cert = certificates[index];
+              final isExpanded = _expandedIndex == index;
+
+              return Align(
+                alignment: Alignment.center,
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(
+                    maxWidth: isWide ? 700 : double.infinity,
+                  ),
+                  child: Card(
+                    elevation: 4,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    margin: const EdgeInsets.symmetric(vertical: 10),
+                    child: ExpansionTile(
+                      key: Key("cert_$index-${isExpanded}"),
+                      initiallyExpanded: isExpanded,
+                      onExpansionChanged: (bool expanded) {
+                        setState(() {
+                          _expandedIndex = expanded ? index : null;
+                        });
+                      },
+                      title: Text(
+                        cert.title,
+                        style: GoogleFonts.openSans(
+                          fontWeight: FontWeight.bold,
+                          fontSize: isWide ? 18 : 16,
+                        ),
+                      ),
+                      subtitle: Text(
+                        "${cert.issuer} • ${cert.date}",
+                        style: TextStyle(fontSize: isWide ? 14 : 13),
+                      ),
+                      children: [
+                        if (cert.description != null)
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 16,
+                              vertical: 8,
+                            ),
+                            child: Text(
+                              cert.description!,
+                              style: GoogleFonts.openSans(
+                                fontSize: isWide ? 15 : 14,
+                              ),
+                            ),
+                          ),
+                        if (cert.link != null)
+                          Padding(
+                            padding: const EdgeInsets.only(
+                              left: 16,
+                              right: 16,
+                              bottom: 12,
+                            ),
+                            child: Align(
+                              alignment: Alignment.centerLeft,
+                              child: TextButton.icon(
+                                onPressed: () => _launchURL(cert.link!),
+                                icon: const Icon(Icons.open_in_new),
+                                label: const Text("View Certificate"),
+                              ),
+                            ),
+                          ),
+                      ],
                     ),
                   ),
-                if (cert.link != null)
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 10),
-                    child: TextButton.icon(
-                      onPressed: () => _launchURL(cert.link!),
-                      icon: const Icon(Icons.open_in_new),
-                      label: const Text("View Certificate"),
-                    ),
-                  ),
-              ],
-            ),
+                ),
+              );
+            },
           );
         },
       ),
