@@ -1,7 +1,7 @@
 # Awesome Portfolio ✨
 
-A beautifully crafted **Flutter** personal portfolio app by **Sahil Sardhara**, supporting **Android**, **iOS**, and **Tablet** screens.  
-It includes interactive UI, theme customization, and app-style navigation to showcase your profile and skills professionally.
+A beautifully animated **Flutter** personal portfolio by **Sahil Sardhara**, designed for **Android**, **iOS**, and **Tablet** screens.  
+This app includes theme customization, app-style navigation, and a modern UI to showcase your profile and skills.
 
 ![Platform](https://img.shields.io/badge/platform-Flutter-blue)
 ![License](https://img.shields.io/badge/status-active-success)
@@ -17,62 +17,65 @@ It includes interactive UI, theme customization, and app-style navigation to sho
 ## 🎨 Key Features
 
 - 🌈 6 color themes to change the app's entire look
-- 🧑‍💼 About Me app with profile picture
-- 🔍 Tap on the picture to open it in full screen
-- 🧩 Multiple embedded app cards to navigate through:
+- 🧑‍💼 About Me app with profile picture that expands to fullscreen on tap
+- 🧩 Embedded apps:
   - About Me
   - Skills
   - Education
   - Experience
-  - Projects
-- 🔁 Smooth navigation and animations
-- ❄️ Frosted glass and modern UI with rain/cloud effects
-- 📱 Device frame simulation for screen previews
+  - Certificates
+  - Resume
+  - GitHub, LinkedIn, Twitter links
+- ❄️ Frosted glass + rain/cloud UI
+- 📱 Simulated mobile device frame
 
-## 🚀 Tech Stack
+---
+
+## 📸 Screenshots
+
+| Android View | iOS View | Tablet View |
+|--------------|----------|-------------|
+| ![Android](assets/screenshots/a![android screen](https://github.com/user-attachments/assets/cb66ff0a-81ad-48bc-a340-8cf9a98f1962)
+ndroid.png) |
+![iOS](assets/scre![iphone screen](https://github.com/user-attachments/assets/d81d9d89-2d6b-4dc4-b17a-2de2d00b7f18)
+enshots/ios.png) |
+![Tablet](assets/screenshots/tab![tablet  screen](https://github.com/user-attachments/assets/9ffea582-a76e-455c-90c8-9afd998b4b57)
+let.png) |
+
+*(Make sure to save these screenshots in `assets/screenshots/` or update the path)*
+
+---
+
+## 🎬 Final Output Demo
+
+https://user-images.githubusercontent.com/your-username/demo-video.mp4  
+*(Replace this link with the GitHub-hosted video or YouTube if you prefer. GitHub supports MP4 previews in issues and PRs, or host it externally.)*
+
+---
+
+## 🛠 Tech Stack
 
 - **Flutter**  
 - **Dart**  
-- **flutter_animate**  
-- **device_frame**  
-- **font_awesome_flutter**  
-- **custom_button_builder**
+- `flutter_animate`  
+- `font_awesome_flutter`  
+- `custom_button_builder`  
+- `device_frame`  
 
-## 📦 Installation
+---
 
-### 🔧 Prerequisites
+## 🚀 Getting Started
+
+### Requirements
 
 - Flutter SDK
-- Dart
-- Android Studio / Xcode (for device testing)
-- Visual Studio COde
+- Android Studio or Xcode
+- Git
 
-### ▶️ Run Locally
+### Run the App
 
 ```bash
 git clone https://github.com/Sahil-sardhara/My_Protfolio.git
 cd My_Protfolio
 flutter pub get
 flutter run
-📁 Folder Structure
-css
-Copy
-Edit
-lib/
-├── conts/
-├── model/
-├── provider/
-├── screens/
-├── widget/
-└── main.dart
-📸 Screenshots
-(Add actual screenshot paths or images later)
-
-Home Screen with App List
-
-About Me Page with Expandable Photo
-
-Theme Switcher with Live Preview
-
-🙋‍♂️ Author
-Sahil Sardhara
