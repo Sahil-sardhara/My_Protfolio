@@ -14,6 +14,8 @@ This app includes theme customization, app-style navigation, and a modern UI to 
 - 📱 iOS  
 - 💻 Tablet  
 
+---
+
 ## 🎨 Key Features
 
 - 🌈 6 color themes to change the app's entire look
@@ -33,32 +35,37 @@ This app includes theme customization, app-style navigation, and a modern UI to 
 
 ## 📸 Screenshots
 
-| Android View | iOS View | Tablet View |
-|--------------|----------|-------------|
-| ![Android](assets/screenshots/a![android screen](https://github.com/user-attachments/assets/cb66ff0a-81ad-48bc-a340-8cf9a98f1962)
-ndroid.png) |![iOS](assets/scre![iphone screen](https://github.com/user-attachments/assets/d81d9d89-2d6b-4dc4-b17a-2de2d00b7f18)
-enshots/ios.png) |![Tablet](assets/screenshots/tab![tablet  screen](https://github.com/user-attachments/assets/9ffea582-a76e-455c-90c8-9afd998b4b57)
-let.png) |
+### 📱 Android View  
+![Android screen](https://github.com/user-attachments/assets/cb66ff0a-81ad-48bc-a340-8cf9a98f1962)
 
-*(Make sure to save these screenshots in `assets/screenshots/` or update the path)*
+---
+
+### 🍏 iOS View  
+![iPhone screen](https://github.com/user-attachments/assets/d81d9d89-2d6b-4dc4-b17a-2de2d00b7f18)
+
+---
+
+### 💻 Tablet View  
+![Tablet screen](https://github.com/user-attachments/assets/9ffea582-a76e-455c-90c8-9afd998b4b57)
 
 ---
 
 ## 🎬 Final Output Demo
 
-https://user-images.githubusercontent.com/your-username/demo-video.mp4  
-*(Replace this link with the GitHub-hosted video or YouTube if you prefer. GitHub supports MP4 previews in issues and PRs, or host it externally.)*
+> *(Replace this link with your GitHub-uploaded or YouTube video once hosted)*
+
+[▶ Watch Final Demo (MP4)](https://github.com/Sahil-sardhara/My_Protfolio/assets/your-video-id.mp4)
 
 ---
 
 ## 🛠 Tech Stack
 
-- **Flutter**  
-- **Dart**  
-- `flutter_animate`  
-- `font_awesome_flutter`  
-- `custom_button_builder`  
-- `device_frame`  
+- **Flutter**
+- **Dart**
+- `flutter_animate`
+- `font_awesome_flutter`
+- `custom_button_builder`
+- `device_frame`
 
 ---
 
@@ -67,13 +74,26 @@ https://user-images.githubusercontent.com/your-username/demo-video.mp4
 ### Requirements
 
 - Flutter SDK
-- Android Studio or Xcode
+- Android Studio / Xcode
 - Git
 
-### Run the App
+### Run Locally
 
 ```bash
 git clone https://github.com/Sahil-sardhara/My_Protfolio.git
 cd My_Protfolio
 flutter pub get
 flutter run
+📁 Folder Structure
+bash
+Copy
+Edit
+lib/
+├── conts/          # App-wide constants
+├── model/          # Data models
+├── provider/       # State management
+├── screens/        # UI screens
+├── widget/         # Reusable widgets
+└── main.dart       # Entry point
+🙋‍♂️ Author
+Sahil Sardhara
